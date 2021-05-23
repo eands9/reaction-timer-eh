@@ -1,16 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Eric's Reaction Timer</h1>
+  <button @click="turnOnBlock">Play</button>
+  <Block v-if="showBlock"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Block from './components/Block'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { Block },
+  data(){
+    return{
+      showBlock: false
+    }
+  },
+  methods:{
+    turnOnBlock(){
+      this.showBlock=true
+    }
   }
+
 }
 </script>
 
@@ -23,4 +33,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>
