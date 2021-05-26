@@ -1,16 +1,34 @@
 <template>
-  <h2 class="block">Click Me</h2>
+  <h2 class="block" v-if="showBlock" @click="stopTimer">Click Me</h2>
 </template>
 
 <script>
 export default {
+  props: ['delayProps'],
   data(){
     return{
-      showBlock: false
+      showBlock: false,
+      timer: null,
+      reactionTime: 0
     }
   },
+  mounted(){
+    setTimeout(() => {
+      this.showBlock = true
+      this.startTimer()
+    }, this.delayProps)
+  },
   methods:{
-
+    startTimer(){
+      this.timer=setInterval(()=>{
+        this.reactionTime += 10
+      },10)
+    },
+    stopTimer(){
+      console.log(this.reactionTime)
+      // clearInterval(this.timer)
+      
+    }
   }
 }
 </script>

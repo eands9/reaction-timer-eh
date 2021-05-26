@@ -1,7 +1,10 @@
 <template>
   <h1>Eric's Reaction Timer</h1>
-  <button @click="turnOnBlock">Play</button>
-  <Block v-if="showBlock"/>
+  <button @click="start">Play</button>
+  <h1>
+    <p></p>
+  </h1>
+  <Block v-if="isPlaying" :delayProps="delay"/>
 </template>
 
 <script>
@@ -12,12 +15,15 @@ export default {
   components: { Block },
   data(){
     return{
-      showBlock: false
+      isPlaying: false,
+      delay: null
     }
   },
   methods:{
-    turnOnBlock(){
-      this.showBlock=true
+    start(){
+      this.isPlaying=true
+      this.delay=2000 + Math.random() * 5000
+      console.log(this.delay)
     }
   }
 
